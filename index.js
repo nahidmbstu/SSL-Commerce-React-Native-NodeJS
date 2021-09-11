@@ -19,7 +19,7 @@ class SSL extends React.Component {
   getPaymentPage = async () => {
     try {
       let payload = {
-        mb_id: "5e257f2363fa1f3f4029abaa"
+        mb_id: ""
       };
       let { data } = await Axios.post(payment_url, payload);
 
@@ -48,12 +48,12 @@ class SSL extends React.Component {
             source={{ html: this.state.html, baseUrl: "web/" }}
             mixedContentMode='always'
             style={{ flex: 1 }}
-            // onMessage={event => {
-            //   let message = event.nativeEvent.data;
-            //   console.log(message);
-            //   if (message === "payment completed") {
-            //   }
-            // }}
+            onMessage={event => {
+              let message = event.nativeEvent.data;
+              console.log(message);
+              if (message === "payment completed") {
+              }
+            }}
           />
         ) : null}
       </View>
